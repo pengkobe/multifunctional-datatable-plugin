@@ -1,5 +1,6 @@
 /****
 dataTableUX:based on jquery-datatables && dataTables.tableTools
+author:[yipeng](http://yipeng.info)
 *****/
 
 (function (window, document, undefined) {
@@ -246,7 +247,7 @@ dataTableUX:based on jquery-datatables && dataTables.tableTools
                     }
                 }
             });
-        } table
+        } 
 
         //全选/反选切换
         function generateSelectAll() {

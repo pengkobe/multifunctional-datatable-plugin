@@ -35,6 +35,32 @@ function initTable() {
             { "data": "ManagementName", width: '6%' },
 
         ],
+        formConfig:[
+            // 添加表单
+            {
+                name:"add",
+                title:"添加功能点信息",
+                url:"http://www.eegrid.com:8081/Action.ashx?Name=HYD.E3.Business.FunctionBLL.AddOrSaveFunction",
+                parameName:"model",
+                field:[
+                    {name:'FunctionName',type:"text", rules:{min:1,max:5}}
+                    // ...
+                ],
+            },
+            // 修改表单
+            {
+                name:"update",
+                title:"修改功能点信息",
+                url:"http://www.eegrid.com:8081/Action.ashx?Name=HYD.E3.Business.FunctionBLL.AddOrSaveFunction",
+                parameName:"model",
+                field:[
+                    {name:'FunctionName',type:"text", rules:{min:1,max:5}},
+                    {name:'ManagementName',type:"select", ajax:".."},
+                    {name:'PName',tpl:"xxx"}
+                    // ...
+                ],
+            }
+        ],
         // 服务端导出
         exportConfig: {
             url: '/ToXls.aspx?Name=HYD.E3.Business.FunctionBLL.Export',
@@ -91,7 +117,12 @@ function initDropDownTree() {
             $("#ulFunctionPName").append('<li id="li0"  style="list-style:none;height:19px;"  onclick="javascript:clickfunctionpnameli(event,0,\'\'); return false;"  value="0"></li>');
             for (var i = 0; i < model.length; i++) {
                 if (i == 0 || model[i].ParentID == null || parseInt(model[i].ParentID) == 0)
-                    $("#ulFunctionPName").append('<li id="li' + model[i].ID + '"  style="list-style:none;"  onclick="javascript:clickfunctionpnameli(event,' + model[i].ID + ',\'' + model[i].FunctionName + '\'); return false;"  value="' + model[i].ID + '">' + model[i].FunctionName + '</li>');
+                    $("#ulFunctionPName").append('<li id="li' + model[i].ID 
+                    + '"  style="list-style:none;"  onclick="javascript:clickfunctionpnameli(event,' 
+                    + model[i].ID + ',\'' 
+                    + model[i].FunctionName + '\'); return false;"  value="' 
+                    + model[i].ID + '">' 
+                    + model[i].FunctionName + '</li>');
                 else {
                     var pli = $('#li' + model[i].ParentID + '');
                     pli.append('<ul   id="ul' + model[i].ParentID + '"></ul>');
